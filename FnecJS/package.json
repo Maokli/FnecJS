@@ -1,0 +1,30 @@
+{
+  "name": "fnecjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --extensions \".ts,.tsx\" --out-dir dist",
+    "type-check": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.27.0",
+    "@babel/core": "^7.26.10",
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.27.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
