@@ -13,6 +13,6 @@
     "declaration": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "jest/**/*"],
+  "include": ["packages/fnec/src/**/*", "jest/**/*"],
   "exclude": ["node_modules"]
 }
