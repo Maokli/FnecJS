@@ -1,4 +1,4 @@
-import Fnec from '../src/fnec';
+import Fnec from '../packages/fnec/src/fnec';
 
 describe('JSX Transpilation', () => {
   let createElementSpy: jest.SpyInstance
