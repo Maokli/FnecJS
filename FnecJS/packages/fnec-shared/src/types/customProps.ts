@@ -1,8 +1,4 @@
-
-export type DomElement = {
-  type: string,
-  props: CustomProps | null,
-}
+import { DomElement } from "./domElement";
 
 export type CustomProps = {
   [key: string]: any;

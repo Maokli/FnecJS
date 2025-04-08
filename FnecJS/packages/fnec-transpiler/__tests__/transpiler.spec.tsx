@@ -1,10 +1,10 @@
-import Fnec from '../packages/fnec/src/fnec';
+import { FnecTranspiler } from "../src/transpiler";
 
 describe('JSX Transpilation', () => {
   let createElementSpy: jest.SpyInstance
 
   beforeEach(() => {
-    createElementSpy = jest.spyOn(Fnec, 'createElement');
+    createElementSpy = jest.spyOn(FnecTranspiler, 'createElement');
   });
 
   test('should transpile JSX to CustomElement.createElement calls', () => {
@@ -61,7 +61,7 @@ describe('JSX Transpilation', () => {
     
     // Check that createElement was called with the Fragment and the child spans
     expect(createElementSpy).toHaveBeenCalledWith(
-      Fnec.Fragment,
+      FnecTranspiler.Fragment,
       null,
       expect.any(Object), // first span
       expect.any(Object)  // second span

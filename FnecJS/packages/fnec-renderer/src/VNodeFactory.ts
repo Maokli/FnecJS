@@ -1,6 +1,6 @@
-import { CustomProps, DomElement } from "../types";
-import { ObjectUtils } from "../../../shared/utilities/object.utils"
-import { ELEMENT_TYPES } from "../constants";
+import { CustomProps, DomElement } from "fnec-shared";
+import { ObjectUtils } from "fnec-shared"
+import { ELEMENT_TYPES } from "fnec-shared";
 
 export class VNodeFactory {
   buildNode(element: DomElement) {

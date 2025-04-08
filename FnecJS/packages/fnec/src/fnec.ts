@@ -1,5 +1,5 @@
-import { FnecRenderer } from "./renderer/renderer";
-import { Transplier } from "./transplier";
+import { FnecRenderer } from "fnec-renderer";
+import { FnecTranspiler } from "fnec-transpiler";
 declare global {
   namespace  JSX {
     interface IntrinsicElements {
@@ -9,8 +9,8 @@ declare global {
 }
 
 class Fnec {
-  static createElement = Transplier.createElement;
-  static Fragment = Transplier.Fragment;
+  static createElement = FnecTranspiler.createElement;
+  static Fragment = FnecTranspiler.Fragment;
   static render = FnecRenderer.render;
 }
 

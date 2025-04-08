@@ -1,5 +1,4 @@
-import { ELEMENT_TYPES } from "../constants"
-import { CustomProps, DomElement } from "../types"
+import { DomElement } from "fnec-shared"
 import { VNodeFactory } from "./VNodeFactory";
 
 export class FnecRenderer {

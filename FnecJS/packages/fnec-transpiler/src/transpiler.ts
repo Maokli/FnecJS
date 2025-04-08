@@ -1,7 +1,7 @@
-import { ELEMENT_TYPES } from "./constants";
-import { CustomProps, DomElement } from "./types";
+import { ELEMENT_TYPES } from "fnec-shared";
+import { CustomProps, DomElement } from "fnec-shared";
 
-export class Transplier {
+export class FnecTranspiler {
   static createElement(type: string, props: CustomProps | null, ...children: any[]): DomElement {
     return {
       type,
@@ -19,7 +19,6 @@ export class Transplier {
   // Fragment component for JSX fragments
   static Fragment = ELEMENT_TYPES.FRAGMENT_ELEMENT;
 }
-
 
 function createTextElement(text: string): DomElement {
   return {

@@ -1,9 +1,10 @@
-import Fnec from '../packages/fnec/src/fnec';
-import { VNodeFactory } from '../packages/fnec/src/renderer/VNodeFactory';
+import { FnecTranspiler } from 'fnec-transpiler';
+import { VNodeFactory } from '../src/VNodeFactory';
+import { FnecRenderer } from '../src/renderer';
 
 const originalBuildNode = VNodeFactory.prototype.buildNode;
 
-describe('Fnec.render', () => {
+describe('FnecRenderer.render', () => {
   // Mock dependencies
   const mockAppendChild = jest.fn();
   const mockVNode = document.createElement('div');
@@ -35,7 +36,7 @@ describe('Fnec.render', () => {
     container.appendChild = mockAppendChild;
     
     // Call the render function
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify buildNode was called with the element
     expect(mockBuildNode).toHaveBeenCalledWith(element);
@@ -50,7 +51,7 @@ describe('Fnec.render', () => {
     container.appendChild = mockAppendChild;
     
     // Call the render function
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify appendChild was called with the vNode
     expect(mockAppendChild).toHaveBeenCalledWith(mockVNode);
@@ -68,7 +69,7 @@ describe('Fnec.render', () => {
     container.appendChild = mockAppendChild;
     
     // Call the render function
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify buildNode was called with the element
     expect(mockBuildNode).toHaveBeenCalledWith(element);
@@ -91,7 +92,7 @@ describe('Fnec.render', () => {
     container.appendChild = mockAppendChild;
     
     // Call the render function
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify buildNode was called with the element
     expect(mockBuildNode).toHaveBeenCalledWith(element);
@@ -102,7 +103,7 @@ describe('Fnec.render', () => {
 });
 
 // Integration tests that use JSDOM to test real DOM rendering
-describe('Fnec.render DOM integration', () => {
+describe('FnecRenderer.render DOM integration', () => {
   test('should render a simple element to the DOM', () => {
     // Create a test element
     const element = <div className="test">Hello World</div>;
@@ -114,7 +115,7 @@ describe('Fnec.render DOM integration', () => {
     container.appendChild = HTMLElement.prototype.appendChild;
     
     // Render the element
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify the result
     expect(container.innerHTML).toContain('<div class="test">');
@@ -137,7 +138,7 @@ describe('Fnec.render DOM integration', () => {
     container.appendChild = HTMLElement.prototype.appendChild;
     
     // Render the element
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify the result
     expect(container.innerHTML).toContain('<div class="parent">');
@@ -164,7 +165,7 @@ describe('Fnec.render DOM integration', () => {
     container.appendChild = HTMLElement.prototype.appendChild;
     
     // Render the element
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify the result
     expect(container.innerHTML).toContain('<div class="component">');
@@ -187,7 +188,7 @@ describe('Fnec.render DOM integration', () => {
     container.appendChild = HTMLElement.prototype.appendChild;
     
     // Render the element
-    Fnec.render(element, container);
+    FnecRenderer.render(element, container);
     
     // Verify the result
     expect(container.innerHTML).toContain('<div>Item 1</div>');

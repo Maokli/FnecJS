@@ -2,11 +2,15 @@
   "name": "fnecjs",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "babel src --extensions \".ts,.tsx\" --out-dir dist",
     "type-check": "tsc --noEmit",
     "start": "node dist/index.js",
     "test": "jest",
+    "test:transpiler": "jest ./packages/fnec-transpiler",
+    "test:renderer": "jest ./packages/fnec-renderer",
     "test:watch": "jest --watch"
   },
   "keywords": [],

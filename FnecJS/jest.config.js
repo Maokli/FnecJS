@@ -1,6 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  roots: ['<rootDir>/packages'],
   transform: {
     '^.+\\.(ts|tsx)$': [
       'babel-jest',
@@ -11,13 +12,18 @@ module.exports = {
         ],
         plugins: [
           ['@babel/plugin-transform-react-jsx', {
-            pragma: 'Fnec.createElement',
-            pragmaFrag: 'Fnec.Fragment',
+            pragma: 'FnecTranspiler.createElement',
+            pragmaFrag: 'FnecTranspiler.Fragment'
           }]
         ]
       }
     ]
   },
-  testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
+  testMatch: ['**/__tests__/**/*.ts?(x)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleNameMapper: {
+    '^fnec-renderer(.*)$': '<rootDir>/packages/fnec-renderer$1',
+    '^fnec-transpiler(.*)$': '<rootDir>/packages/fnec-transpiler$1',
+  },
+  setupFiles: ['<rootDir>/jest.setup.js'],
 };
