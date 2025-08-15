@@ -1,0 +1,1 @@
+export const TIME_SLICE_SIZE = 5;
