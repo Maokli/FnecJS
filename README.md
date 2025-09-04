@@ -20,6 +20,7 @@ This project is organized as a monorepo using [npm workspaces](https://docs.npmj
 | [`fnec-renderer`](./FnecJS/packages/fnec-renderer) | Takes transpiled JSX and transforms it into DOM elements, attaching to the root node. |
 | [`fnec-transpiler`](./FnecJS/packages/fnec-transpiler) | Custom JSX transpiler that converts JSX syntax into `fnec`-ready code. |
 | [`fnec-shared`](./FnecJS/packages/fnec-shared) | Shared utilities, constants, and types used across all packages. |
+| [`fnec-scheduler`](./FnecJS/packages/fnec-scheduler) | Cooperative task scheduler powering FnecJS — handles task queues, priorities, and yielding control to the host. |
 
 Each package has its own README with more detailed documentation and usage examples.
 
@@ -55,6 +56,7 @@ You can learn more about each part of the library by diving into the individual 
 - [`fnec-renderer`](./FnecJS/packages/fnec-renderer/README.md)
 - [`fnec-transpiler`](./FnecJS/packages/fnec-transpiler/README.md)
 - [`fnec-shared`](./FnecJS/packages/fnec-shared/README.md)
+- [`fnec-scheduler`](./FnecJS/packages/fnec-scheduler/README.md)
 
 ---
 
