@@ -18,13 +18,9 @@ export class TimingService {
      * @param timerQueue The queue containing delayed tasks
      * @param tasksQueue The queue containing ready to execute tasks
      */
-    processQueues(timerQueue: Array<Task>, tasksQueue: Array<Task>) {
+    advanceTime(timerQueue: Array<Task>, tasksQueue: Array<Task>) {
         this.moveDelayedTasksIfNeeded(timerQueue, tasksQueue);
         
-        this.advanceTime();
-    }
-
-    private advanceTime() {
         this.time++;
     }
 

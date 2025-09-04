@@ -33,7 +33,7 @@ describe("Testing TimingService", () => {
         timerQueue.push(delayedTask);
 
         // Act
-        timingService.processQueues(timerQueue, tasksQueue);
+        timingService.advanceTime(timerQueue, tasksQueue);
 
         // Assert
         expect(timerQueue.length).toBe(0);
@@ -63,14 +63,14 @@ describe("Testing TimingService", () => {
         timerQueue.push(delayedTask2);
 
         // Act
-        timingService.processQueues(timerQueue, tasksQueue);
+        timingService.advanceTime(timerQueue, tasksQueue);
 
         // Assert
         expect(timerQueue.length).toBe(1);
         expect(tasksQueue).toContain(delayedTask1);
 
         // Act
-        timingService.processQueues(timerQueue, tasksQueue);
+        timingService.advanceTime(timerQueue, tasksQueue);
 
         // Assert
         expect(timerQueue.length).toBe(0);
