@@ -21,6 +21,10 @@ export class FnecScheduler {
   /** The service that handles executing tasks and dequeueing them */
   private workLoop: WorkLoop = new WorkLoop();
 
+  /**
+   * Schedules a task to be processed.
+   * @param callback The function to be scheduled, must be cooperative
+   */
   scheduleTask(callback: TaskCallback, priority: PriorityLevel, timeout: number, thread: Thread)
   {
     const currentTIme = this.timingService.now();
@@ -40,6 +44,9 @@ export class FnecScheduler {
       this.tasksQueue.push(task);
   }
 
+  /**
+   * Iterates through the tasks and process them until both queues are empty.
+   */
   startWork() {
     while(this.tasksQueue.length > 0 || this.timerQueue.length > 0) {
       this.timingService.advanceTime(this.timerQueue, this.tasksQueue);

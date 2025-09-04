@@ -47,6 +47,10 @@ export class TimingService {
         }
     }
 
+    /**
+     * Delegates control to the host when time conditions are met.
+     * @param tasksQueue Used to determine the actual thread type
+     */
     private delegateToHostIfNeeded(tasksQueue: Array<Task>) {
         if(tasksQueue.length == 0) {
             return;

@@ -1,1 +1,1 @@
-export * from './src/scheduler'
+export { FnecScheduler } from './src/scheduler'

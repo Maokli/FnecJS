@@ -1,5 +1,8 @@
 import { Task } from "./types/task";
 
+/**
+ * The class that handles executing and dequeueing tasks.
+ */
 export class WorkLoop {
     /**
      * Performs a units of work and determines if there is still work to do.
