@@ -29,6 +29,9 @@ export class TimingService {
      */
     private moveDelayedTasksIfNeeded(timerQueue: Array<Task>, tasksQueue: Array<Task>)
     {
+        if(timerQueue.length === 0)
+            return;
+        
         const earliestDelayedTask = timerQueue[0];
 
         if(this.now() > earliestDelayedTask.expiryTime)
