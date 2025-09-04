@@ -9,15 +9,16 @@ import { WorkLoop } from "./workLoop";
 * A stateful class that represents the scheduler.
 */
 export class FnecScheduler {
-  /* A queue for processing delayed tasks sorted by earliest deadline first */
-  timerQueue: Array<Task> = [];
+  /** A queue for processing delayed tasks sorted by earliest deadline first */
+  private timerQueue: Array<Task> = [];
 
-  /* A queue for processing immidiate tasks sorted by priority, ie tasks ready to be started */
-  tasksQueue: Array<Task> = [];
+  /** A queue for processing immidiate tasks sorted by priority, ie tasks ready to be started */
+  private tasksQueue: Array<Task> = [];
 
-  /* An integer to track time */
+  /** The service that handles time */
   private timingService: TimingService = new TimingService();
 
+  /** The service that handles executing tasks and dequeueing them */
   private workLoop: WorkLoop = new WorkLoop();
 
   scheduleTask(callback: TaskCallback, priority: PriorityLevel, timeout: number, thread: Thread)
