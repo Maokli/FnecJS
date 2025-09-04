@@ -33,17 +33,17 @@ export class FnecScheduler {
       expiryTime: currentTIme + timeout,
       thread: thread
     }
-
-    if(timeout > 0)
+    
+    if(timeout < 0)
       this.timerQueue.push(task);
     else
       this.tasksQueue.push(task);
   }
 
   startWork() {
-    while(this.tasksQueue.length > 0 && this.timerQueue.length > 0) {
+    while(this.tasksQueue.length > 0 || this.timerQueue.length > 0) {
       this.timingService.advanceTime(this.timerQueue, this.tasksQueue);
-      this.workLoop.DoWork(this.tasksQueue);
+      this.workLoop.doWork(this.tasksQueue);
     }
   }
 }
