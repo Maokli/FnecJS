@@ -6,7 +6,7 @@ export class WorkLoop {
      * @param tasksQueue The queue of ready to be executed tasks.
      * @returns True if there is more work to do, false if not.
      */
-    DoWork(tasksQueue: Array<Task>): boolean {
+    doWork(tasksQueue: Array<Task>): boolean {
         if(!this.HasMoreWorkToDo(tasksQueue))
             return false;
 

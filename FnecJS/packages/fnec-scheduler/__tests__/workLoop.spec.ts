@@ -13,7 +13,7 @@ describe("Testing WorkLoop", () => {
         const emptyQueue = [];
         
         // Act
-        const result = workLoop.DoWork(emptyQueue);
+        const result = workLoop.doWork(emptyQueue);
 
         // Assert
         expect(result).toBe(false);
@@ -33,7 +33,7 @@ describe("Testing WorkLoop", () => {
             const queue = [taskWithNoContinuation];
 
             // Act
-            const result = workLoop.DoWork(queue);
+            const result = workLoop.doWork(queue);
 
             // Assert
             expect(result).toBe(false);
@@ -53,7 +53,7 @@ describe("Testing WorkLoop", () => {
             const queue = [taskWithNoContinuation];
 
             // Act
-            const result = workLoop.DoWork(queue);
+            const result = workLoop.doWork(queue);
 
             // Assert
             expect(result).toBe(true);
