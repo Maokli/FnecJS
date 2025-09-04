@@ -1,1 +1,2 @@
-export const TIME_SLICE_SIZE = 5;
+export const BACKGROUND_TIME_SLICE_SIZE = 5;
+export const MAIN_TIME_SLICE_SIZE = 3;

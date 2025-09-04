@@ -1,1 +1,1 @@
-export type TaskCallback = () => void;
+export type TaskCallback = () => boolean;
