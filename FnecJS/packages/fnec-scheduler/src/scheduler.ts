@@ -1,43 +1,38 @@
-import { TIME_SLICE_SIZE } from "./constants";
+import { TimingService } from "./timingService";
 import { Task } from "./types/task";
 import { TaskCallback } from "./types/taskCallback";
 import { PriorityLevel } from "./types/taskPriority";
+import { Thread } from "./types/taskThread";
 
 /*
 * A stateful class that represents the scheduler.
 */
 export class FnecScheduler {
-  /* A queue for processing delayed tasks */
+  /* A queue for processing delayed tasks sorted by earliest deadline first */
   timerQueue: Array<Task> = [];
 
-  /* A queue for processing immidiate tasks, ie tasks ready to be started */
+  /* A queue for processing immidiate tasks sorted by priority, ie tasks ready to be started */
   tasksQueue: Array<Task> = [];
 
   /* An integer to track time */
-  private timer: number = 0;
+  private timingService: TimingService = new TimingService();
 
-  private shouldYieldControlToBrowser() {
-    return this.timer % TIME_SLICE_SIZE === 0;
-  }
-
-  scheduleTask(callback: TaskCallback, priority: PriorityLevel, timeout: number)
+  scheduleTask(callback: TaskCallback, priority: PriorityLevel, timeout: number, thread: Thread)
   {
-    // So we can safely assume it will be always a number
-    timeout = timeout ?? 0;
+    const currentTIme = this.timingService.now()
 
     const task: Task = {
       callback: callback,
       timeout: timeout,
       priority: priority,
-      startTime: this.timer,
-      expiryTime: this.timer + timeout
+      startTime: currentTIme,
+      expiryTime: currentTIme + timeout,
+      thread: thread
     } 
 
     if(timeout > 0)
       this.timerQueue.push(task)
     else
       this.tasksQueue.push(task)
-    
-    // TODO: call doWork
   }
 }
