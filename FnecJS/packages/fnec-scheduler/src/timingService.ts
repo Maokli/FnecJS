@@ -1,12 +1,16 @@
 import { Task } from "./types/task";
+import { RessourceManagementUtils } from "./utils/ressourceUtils";
 
 /**
  * This class handles managing time
  * and deciding what should happen at a given point in time
  */
 export class TimingService {
-    /* A variable used to track time */
+    /** A variable used to track time */
     private time: number = 0;
+    
+    /** The last time host took control */
+    private lastHostControlTime = 0;
 
     now(): number {
         return this.time;
@@ -22,6 +26,8 @@ export class TimingService {
         this.moveDelayedTasksIfNeeded(timerQueue, tasksQueue);
         
         this.time++;
+        
+        this.delegateToHostIfNeeded(tasksQueue);
     }
 
     /**
@@ -31,13 +37,25 @@ export class TimingService {
     {
         if(timerQueue.length === 0)
             return;
-        
+
         const earliestDelayedTask = timerQueue[0];
 
         if(this.now() > earliestDelayedTask.expiryTime)
         {
             timerQueue.shift();
             tasksQueue.push(earliestDelayedTask)
+        }
+    }
+
+    private delegateToHostIfNeeded(tasksQueue: Array<Task>) {
+        if(tasksQueue.length == 0) {
+            return;
+        }
+
+        const currentTask = tasksQueue[0];
+        if(RessourceManagementUtils.shouldYieldToHost(this.now(), this.lastHostControlTime, currentTask.thread)) {
+            this.lastHostControlTime = this.now();
+            RessourceManagementUtils.yieldToHost();
         }
     }
 }
