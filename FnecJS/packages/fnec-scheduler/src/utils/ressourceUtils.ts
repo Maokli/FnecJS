@@ -7,7 +7,7 @@ export class RessourceManagementUtils {
      * The browser can use the time delegated to him to
      * perform tasks such as rendering new UI.
      */
-    static YieldToHost() {
+    static yieldToHost() {
         setTimeout(() => {});
     }
 

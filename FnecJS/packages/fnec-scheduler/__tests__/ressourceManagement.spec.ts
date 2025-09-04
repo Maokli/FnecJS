@@ -10,7 +10,7 @@ describe("Testing ressource management utilities", () => {
 
     test("YieldToHost should call setTimeout", () => {
         // Act
-        RessourceManagementUtils.YieldToHost();
+        RessourceManagementUtils.yieldToHost();
 
         // Assert
         expect(setTimeoutSpy).toHaveBeenCalled();
