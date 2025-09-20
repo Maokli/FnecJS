@@ -1,4 +1,4 @@
-import { BackgroundThread, MainThread } from "../src/types/taskThread";
+import { BackgroundThread, MainThread } from "fnec-shared";
 import { RessourceManagementUtils } from "../src/utils/ressourceUtils";
 
 describe("Testing ressource management utilities", () => {

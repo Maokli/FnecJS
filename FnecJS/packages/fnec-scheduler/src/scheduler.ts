@@ -1,8 +1,8 @@
 import { TimingService } from "./timingService";
 import { Task } from "./types/task";
 import { TaskCallback } from "./types/taskCallback";
-import { PriorityLevel } from "./types/taskPriority";
-import { Thread } from "./types/taskThread";
+import { PriorityLevel } from "fnec-shared/src/types/taskPriority";
+import { Thread } from "fnec-shared/src/types/taskThread";
 import { WorkLoop } from "./workLoop";
 
 /*

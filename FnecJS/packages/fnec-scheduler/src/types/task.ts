@@ -1,6 +1,6 @@
 import { TaskCallback } from "./taskCallback"
-import { PriorityLevel } from "./taskPriority"
-import { Thread } from "./taskThread"
+import { PriorityLevel } from "fnec-shared/src/types/taskPriority"
+import { Thread } from "fnec-shared/src/types/taskThread"
 
 export type Task = {
   callback: TaskCallback

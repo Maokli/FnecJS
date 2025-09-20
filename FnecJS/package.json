@@ -6,6 +6,7 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "build": "babel src --extensions \".ts,.tsx\" --out-dir dist",
+    "build:all": "npm run build --workspace fnec-shared --workspace=fnec --workspace=fnec-renderer --workspace=fnec-transpiler --workspace=fnec-scheduler",
     "type-check": "tsc --noEmit",
     "start": "node dist/index.js",
     "test": "jest",

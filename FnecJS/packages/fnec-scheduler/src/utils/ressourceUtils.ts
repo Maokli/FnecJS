@@ -1,5 +1,5 @@
 import { BACKGROUND_TIME_SLICE_SIZE, MAIN_TIME_SLICE_SIZE } from "../constants";
-import { MainThread, Thread } from "../types/taskThread";
+import { MainThread, Thread } from "fnec-shared";
 
 export class RessourceManagementUtils {
     /**

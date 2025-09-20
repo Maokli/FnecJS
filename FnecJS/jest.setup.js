@@ -1,6 +1,6 @@
 // setup.js
 const path = require('path');
-const transpilerModule = require(path.resolve(__dirname, './packages/fnec-transpiler'));
+const transpilerModule = require(path.resolve(__dirname, './packages/fnec-transpiler/src'));
 
 // If the transpiler exports FnecTranspiler as a named export
 if (transpilerModule.FnecTranspiler) {

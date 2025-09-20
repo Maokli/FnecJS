@@ -7,7 +7,7 @@ module.exports = {
       'babel-jest',
       {
         presets: [
-          '@babel/preset-env',
+          ['@babel/preset-env', { targets: { node: 'current' } }],
           '@babel/preset-typescript'
         ],
         plugins: [
@@ -22,8 +22,14 @@ module.exports = {
   testMatch: ['**/__tests__/**/*.ts?(x)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
-    '^fnec-renderer(.*)$': '<rootDir>/packages/fnec-renderer$1',
-    '^fnec-transpiler(.*)$': '<rootDir>/packages/fnec-transpiler$1',
+    '^fnec-renderer(.*)$': '<rootDir>/packages/fnec-renderer/src$1',
+    '^fnec-transpiler(.*)$': '<rootDir>/packages/fnec-transpiler/src$1',
+    '^fnec-shared(.*)$': '<rootDir>/packages/fnec-shared/src$1',
+    '^fnec-scheduler(.*)$': '<rootDir>/packages/fnec-scheduler/src$1',
+    '^fnec(.*)$': '<rootDir>/packages/fnec/src$1',
   },
   setupFiles: ['<rootDir>/jest.setup.js'],
+  transformIgnorePatterns: [
+    'node_modules/(?!(fnec-shared|fnec-renderer|fnec-transpiler|fnec-scheduler|fnec)/)'
+  ],
 };
