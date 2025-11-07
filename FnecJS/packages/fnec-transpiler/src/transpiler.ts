@@ -1,8 +1,8 @@
-import { ELEMENT_TYPES } from "fnec-shared";
+import { ELEMENT_TYPES, FunctionComponent } from "fnec-shared";
 import { CustomProps, DomElement } from "fnec-shared";
 
 export class FnecTranspiler {
-  static createElement(type: string, props: CustomProps | null, ...children: any[]): DomElement {
+  static createElement(type: string | FunctionComponent, props: CustomProps | null, ...children: any[]): DomElement {
     return {
       type,
       props: {
