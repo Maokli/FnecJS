@@ -17,16 +17,23 @@ export class VNodeFactory {
   }
 
   private buildTextNode(element: DomElement) {
-    const textValue = element.props?.nodeValue;
+    let textValue = element.props?.nodeValue;
 
     if(typeof textValue !== "string"){
-      throw new SyntaxError("Cannot create a null text node.");
+      if(typeof textValue === "number") {
+        textValue = (textValue as  number).toString();
+      }
+      else
+        return;
     }
     
     return document.createTextNode(textValue);
   }
 
   private buildHtmlElementNode(element: DomElement) {
+    if(typeof element.type != "string") {
+      return;
+    }
     const vNode = document.createElement(element.type);
 
     this.setProps(vNode, element.props);
@@ -54,12 +61,17 @@ export class VNodeFactory {
       .forEach(name => {
         if(name === "className")
           vNode.setAttribute("class", props[name])
+        else if(name.startsWith('on')) {
+          const eventName = name.replace("on", "");
+          vNode.addEventListener(eventName.toLowerCase(), props[name])
+        }
         else
           vNode.setAttribute(name, props[name])
       })
   }
 
   private buildChildren(element: DomElement, vNode: HTMLElement | DocumentFragment) {
+    return;
     const children = element.props?.children;
 
     if(ObjectUtils.isNullOrUndefined(children))
@@ -67,7 +79,9 @@ export class VNodeFactory {
 
     children!.forEach(child => {
         const childVNode = this.buildNode(child);
-        vNode.appendChild(childVNode);
+        if (childVNode) {
+          vNode.appendChild(childVNode);
+        }
       }
     )
   }
